@@ -23,7 +23,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public List<Item> readAllMenuItems(Long menuId) {
-        List <Item> items = itemDAO.findAllByMenu_IdOrderByCategory_RankAsc(menuId);
+        List <Item> items = itemDAO.findAllByMenu_IdOrderByCategory_RankAscPriceAsc(menuId);
         if (items!=null) {
             return items;
         }
