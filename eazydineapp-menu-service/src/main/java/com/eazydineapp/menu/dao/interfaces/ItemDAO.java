@@ -11,5 +11,9 @@ public interface ItemDAO extends JpaRepository<Item,Long> {
 
     List<Item> findAllByMenu_IdOrderByCategoryAscPriceAsc(Long menuId);
     List<Item> findAllByMenu_IdOrderByCategoryAscNameAsc(Long menuId);
+    List<Item> findAllByMenu_IdOrderByCategory_RankAsc(Long menuId);
+
+
+
 
 }

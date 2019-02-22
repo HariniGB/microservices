@@ -20,6 +20,7 @@ public class Menu {
     private Restaurant restaurant;
 
     @OneToMany(mappedBy="menu")
+    @OrderBy("price ASC")
     private Set<Item> items = new HashSet<>();
 
     public Long getId() {
