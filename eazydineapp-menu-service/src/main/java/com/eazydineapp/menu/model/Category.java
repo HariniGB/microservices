@@ -65,4 +65,12 @@ public class Category {
 	public void setItems(Set<Item> items) {
 		this.items = items;
 	}
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 }
