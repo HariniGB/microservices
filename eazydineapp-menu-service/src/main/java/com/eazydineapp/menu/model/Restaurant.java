@@ -27,6 +27,11 @@ public class Restaurant {
             orphanRemoval = true)
     private Set<Category> categories = new HashSet<>();
 
+
+    @OneToMany(mappedBy="restaurant",cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private Set<Table> tables = new HashSet<>();
+
     private String address1;
     private String address2;
     private String city;
@@ -73,6 +78,14 @@ public class Restaurant {
 
     public void setMenus(Set<Menu> menus) {
         this.menus = menus;
+    }
+
+    public Set<Table> getTables() {
+        return tables;
+    }
+
+    public void setTables(Set<Table> tables) {
+        this.tables = tables;
     }
 
     public Set<Category> getCategories() {
