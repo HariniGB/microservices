@@ -2,7 +2,9 @@ package com.eazydineapp.menu.model;
 
 
 import javax.persistence.*;
+import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,9 +17,12 @@ public class Restaurant {
 
     private String name;
     private String tagline;
-    //TODO Need to create an Enum of Cusines
-    private String cuisine;
 
+
+    // TODO: Implement Cuisines Enum
+//    @ManyToMany(mappedBy="restaurant",cascade = CascadeType.ALL)
+//    private EnumSet<Cuisine> cuisines;
+    private String cuisine;
 
     @OneToMany(mappedBy="restaurant",cascade = CascadeType.ALL,
             orphanRemoval = true)
@@ -64,13 +69,17 @@ public class Restaurant {
         this.tagline = tagline;
     }
 
-    public String getCuisine() {
-        return cuisine;
-    }
+//    public EnumSet<Cuisine> getCuisines() {
+//        return cuisines;
+//    }
+//
+//    public void setCuisines(EnumSet<Cuisine> cuisines) {
+//        this.cuisines = cuisines;
+//    }
 
-    public void setCuisine(String cuisine) {
-        this.cuisine = cuisine;
-    }
+    public String getCuisine() { return cuisine; }
+
+    public void setCuisine(String cuisine) { this.cuisine = cuisine; }
 
     public Set<Menu> getMenus() {
         return menus;
@@ -143,4 +152,5 @@ public class Restaurant {
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
+
 }
