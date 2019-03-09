@@ -1,5 +1,6 @@
 package com.eazydineapp.menu.controller;
 
+import com.eazydineapp.menu.constants.ApiPathConstants;
 import com.eazydineapp.menu.model.Category;
 import com.eazydineapp.menu.service.interfaces.CategoryService;
 import io.swagger.annotations.ApiOperation;
@@ -17,8 +18,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/categories")
-@CrossOrigin
+@RequestMapping(ApiPathConstants.CATEGORY_RESOURCE)
+@CrossOrigin(origins = {"*"})
 public class CategoryController {
 
 	@Autowired

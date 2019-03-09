@@ -40,9 +40,13 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Override
     public Optional<Restaurant> updateRestaurant(Long restaurantId, Restaurant restaurantInBound) {
-
-        if(restaurantDAO.existsById(restaurantId)) {
+        Optional<Restaurant> optionalStoredRestaurant = restaurantDAO.findById(restaurantId);
+        if(optionalStoredRestaurant.isPresent()) {
+            Restaurant storedRestaurant = optionalStoredRestaurant.get();
             restaurantInBound.setId(restaurantId);
+            restaurantInBound.setMenus(storedRestaurant.getMenus());
+            restaurantInBound.setCategories(storedRestaurant.getCategories());
+            restaurantInBound.setTables(storedRestaurant.getTables());
             return Optional.ofNullable(restaurantDAO.save(restaurantInBound));
         }
         return Optional.ofNullable(null);

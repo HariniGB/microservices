@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface CategoryDAO extends JpaRepository<Category,Long> {
-    Optional<Category> findById(Long userId);
+    Optional<Category> findById(Long categoryId);
     List<Category> findCategoriesByRestaurant_Id(Long restaurantId);
 }

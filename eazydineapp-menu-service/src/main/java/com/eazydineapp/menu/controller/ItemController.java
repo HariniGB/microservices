@@ -1,6 +1,7 @@
 package com.eazydineapp.menu.controller;
 
 
+import com.eazydineapp.menu.constants.ApiPathConstants;
 import com.eazydineapp.menu.constants.ServiceConstants;
 import com.eazydineapp.menu.exception.GenericExceptionHandler;
 import com.eazydineapp.menu.model.Item;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/items")
+@RequestMapping(ApiPathConstants.ITEM_RESOURCE)
 @CrossOrigin(origins = {"*"})
 public class ItemController {
 
