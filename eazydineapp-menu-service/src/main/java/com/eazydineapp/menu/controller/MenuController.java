@@ -74,7 +74,7 @@ public class MenuController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	@ApiOperation(value = "ReadAll Menus of a Restaurant", notes="Get All the menus for given restaurant, input restaurant required",nickname = "getRestaurantMenus")
+	@ApiOperation(value = "ReadAll Menus of a RestaurantDTO", notes="Get All the menus for given restaurant, input restaurant required",nickname = "getRestaurantMenus")
 	@RequestMapping(value = "/", params="restaurantId" ,method = RequestMethod.GET)
 	public ResponseEntity<?> getRestaurantMenus(@RequestParam("restaurantId") Long restaurantId) {
 		List<Menu> restaurantMenus =  menuService.readAllRestaurantMenu(restaurantId);

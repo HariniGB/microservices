@@ -14,6 +14,25 @@ public class Menu {
     @GeneratedValue
     private Long id;
     private String name;
+    private String description;
+    private Boolean isActive;
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne

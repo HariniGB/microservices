@@ -68,7 +68,7 @@ public class TableController {
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
-    @ApiOperation(value = "Read All Tables of a Restaurant", notes="Get All the Tables for given restaurant, input restaurant required",nickname = "getRestaurantTables")
+    @ApiOperation(value = "Read All Tables of a RestaurantDTO", notes="Get All the Tables for given restaurant, input restaurant required",nickname = "getRestaurantTables")
     @RequestMapping(value = "/", params="restaurantId" ,method = RequestMethod.GET)
     public ResponseEntity<?> getRestaurantTables(@RequestParam("restaurantId") Long restaurantId) {
         List<Table> restaurantTables =  tableService.readAllRestaurantTables(restaurantId);

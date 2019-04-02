@@ -68,7 +68,7 @@ public class CategoryController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	@ApiOperation(value = "ReadAll Category of a Restaurant", notes="Get All the Categories for given restaurant, input restaurant required",nickname = "getRestaurantCategories")
+	@ApiOperation(value = "ReadAll Category of a RestaurantDTO", notes="Get All the Categories for given restaurant, input restaurant required",nickname = "getRestaurantCategories")
 	@RequestMapping(value = "/", params="restaurantId" ,method = RequestMethod.GET)
 	public ResponseEntity<?> getRestaurantCategories(@RequestParam("restaurantId") Long restaurantId) {
 		List<Category> restaurantCategories =  categoryService.readAllRestaurantCategories(restaurantId);

@@ -2,9 +2,7 @@ package com.eazydineapp.menu.model;
 
 
 import javax.persistence.*;
-import java.util.EnumSet;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,11 +16,28 @@ public class Restaurant {
     private String name;
     private String tagline;
 
+    private Boolean allowpreorder;
+    private  Long avgprice;
+    private String firebaseId;
+    private int numoftables;
+
+    private String phonenumber;
+
+    private int zipcode;
+    private String country;
+
+    private String address1;
+    private String address2;
+    private String city;
+    private String state;
+
+    private String uuid;
 
     // TODO: Implement Cuisines Enum
 //    @ManyToMany(mappedBy="restaurant",cascade = CascadeType.ALL)
 //    private EnumSet<Cuisine> cuisines;
     private String cuisine;
+
 
     @OneToMany(mappedBy="restaurant",cascade = CascadeType.ALL,
             orphanRemoval = true)
@@ -37,12 +52,56 @@ public class Restaurant {
             orphanRemoval = true)
     private Set<Table> tables = new HashSet<>();
 
-    private String address1;
-    private String address2;
-    private String city;
-    private String state;
-    private String country;
-    private int zipcode;
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public int getNumoftables() {
+        return numoftables;
+    }
+
+    public void setNumoftables(int numoftables) {
+        this.numoftables = numoftables;
+    }
+
+    public Boolean getAllowpreorder() {
+        return allowpreorder;
+    }
+
+    public void setAllowpreorder(Boolean allowpreorder) {
+        this.allowpreorder = allowpreorder;
+    }
+
+    public Long getAvgprice() {
+        return avgprice;
+    }
+
+    public void setAvgprice(Long avgprice) {
+        this.avgprice = avgprice;
+    }
+
+
+    public String getFirebaseId() {
+        return firebaseId;
+    }
+
+    public void setFirebaseId(String firebaseId) {
+        this.firebaseId = firebaseId;
+    }
+
+
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
 
     public Long getId() {

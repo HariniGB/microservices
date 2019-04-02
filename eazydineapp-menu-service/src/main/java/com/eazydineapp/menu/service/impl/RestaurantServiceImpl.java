@@ -4,6 +4,8 @@ import com.eazydineapp.menu.dao.interfaces.RestaurantDAO;
 import com.eazydineapp.menu.model.Item;
 import com.eazydineapp.menu.model.Restaurant;
 import com.eazydineapp.menu.service.interfaces.RestaurantService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Autowired
     RestaurantDAO restaurantDAO;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
 
     @Override
     public Optional<Restaurant> createRestaurant(Restaurant restaurant) {
@@ -34,6 +39,17 @@ public class RestaurantServiceImpl implements RestaurantService{
     }
 
     @Override
+    public List<Restaurant> readAllUserRestaurants(String uuid) {
+        List <Restaurant> restaurants = restaurantDAO.findAllByUuidOrderByName(uuid);
+        if (restaurants!=null) {
+            return restaurants;
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
     public Optional<Restaurant> readRestaurant(Long restaurantId) {
         return restaurantDAO.findById(restaurantId);
     }
@@ -43,10 +59,12 @@ public class RestaurantServiceImpl implements RestaurantService{
         Optional<Restaurant> optionalStoredRestaurant = restaurantDAO.findById(restaurantId);
         if(optionalStoredRestaurant.isPresent()) {
             Restaurant storedRestaurant = optionalStoredRestaurant.get();
+
             restaurantInBound.setId(restaurantId);
             restaurantInBound.setMenus(storedRestaurant.getMenus());
             restaurantInBound.setCategories(storedRestaurant.getCategories());
             restaurantInBound.setTables(storedRestaurant.getTables());
+            log.info("RestaurantDTO UUID :: " +restaurantInBound.getUuid() );
             return Optional.ofNullable(restaurantDAO.save(restaurantInBound));
         }
         return Optional.ofNullable(null);
