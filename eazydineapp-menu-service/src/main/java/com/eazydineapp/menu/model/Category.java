@@ -13,7 +13,6 @@ public class Category {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
     private String name;
     private String description;
     private int rank;

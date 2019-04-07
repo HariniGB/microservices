@@ -11,7 +11,6 @@ public class Item {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(unique = true)
     private String name;
     private String description;
     private float price;

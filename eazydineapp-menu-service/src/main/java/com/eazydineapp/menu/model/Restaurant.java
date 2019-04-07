@@ -20,7 +20,7 @@ public class Restaurant {
     private  Long avgprice;
     private String firebaseId;
     private int numoftables;
-
+    private String restaurantbgimage;
     private String phonenumber;
 
     private int zipcode;
@@ -210,6 +210,14 @@ public class Restaurant {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public String getRestaurantbgimage() {
+        return restaurantbgimage;
+    }
+
+    public void setRestaurantbgimage(String restaurantbgimage) {
+        this.restaurantbgimage = restaurantbgimage;
     }
 
 }

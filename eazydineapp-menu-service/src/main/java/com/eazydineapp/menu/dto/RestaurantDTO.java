@@ -12,9 +12,19 @@ public class RestaurantDTO {
     private String city;
     private int zipcode;
     private String cuisine;
+
+    public String getRestaurantbgimage() {
+        return restaurantbgimage;
+    }
+
+    public void setRestaurantbgimage(String restaurantbgimage) {
+        this.restaurantbgimage = restaurantbgimage;
+    }
+
     private Boolean allowpreorder;
     private int numoftables;
     private String phonenumber;
+    private String restaurantbgimage;
 
     public int getNumoftables() {
         return numoftables;
