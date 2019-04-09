@@ -11,6 +11,7 @@ public interface RestaurantService {
     List<Restaurant> readAllRestaurants();
     List<Restaurant> readAllUserRestaurants(String uuid);
     Optional<Restaurant> readRestaurant(Long restaurantId);
+    Optional<Restaurant> readUIDRestaurant(String firebaseId);
     Optional<Restaurant> updateRestaurant(Long restaurantId, Restaurant restaurantInBound);
     Optional<Restaurant> deleteRestaurant(Long restaurantId);
 }

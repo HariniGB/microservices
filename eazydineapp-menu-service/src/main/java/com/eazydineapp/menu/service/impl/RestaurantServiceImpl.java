@@ -18,6 +18,7 @@ public class RestaurantServiceImpl implements RestaurantService{
     @Autowired
     RestaurantDAO restaurantDAO;
 
+
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 
@@ -52,6 +53,12 @@ public class RestaurantServiceImpl implements RestaurantService{
     @Override
     public Optional<Restaurant> readRestaurant(Long restaurantId) {
         return restaurantDAO.findById(restaurantId);
+    }
+
+    @Override
+    public Optional<Restaurant> readUIDRestaurant(String firebaseId) {
+        Optional<Restaurant> restaurant = restaurantDAO.findRestaurantByFirebaseId(firebaseId);
+        return restaurant;
     }
 
     @Override

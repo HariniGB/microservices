@@ -52,6 +52,8 @@ public class RestaurantController {
 		return new ResponseEntity<Optional<Restaurant>>(restaurant, HttpStatus.OK);
 	}
 
+
+
 	@ApiOperation(value = "Delete RestaurantDTO", notes="Delete a restaurant with an restaurantId",nickname = "deleteRestaurant")
 	@RequestMapping(value = "/{restaurantId}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteRestaurant(@PathVariable("restaurantId") Long restaurantId) {
@@ -74,7 +76,7 @@ public class RestaurantController {
 
 	@ApiOperation(value = "ReadAll Restaurants of a User", notes="Get All the restaurants for given user, input user uuid required",nickname = "getUserRestaurants")
 	@RequestMapping(value = "/", params="uuid" ,method = RequestMethod.GET)
-	public ResponseEntity<?> getRestaurantMenus(@RequestParam("uuid") String uuid) {
+	public ResponseEntity<?> getAllUserRestaurants(@RequestParam("uuid") String uuid) {
 		List<Restaurant> userRestaurants =  restaurantService.readAllUserRestaurants(uuid);
 		if(userRestaurants!=null) {
             ModelMapper modelMapper = new ModelMapper();
@@ -98,6 +100,17 @@ public class RestaurantController {
             return new ResponseEntity<List<RestaurantDTO>>(allRestaurantsDTO, HttpStatus.OK);
         }
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
+
+    @ApiOperation(value = "Read Restaurant", notes="Read a RestaurantDTO with firebase restaurantId",nickname = "readFirebaseRestaurant")
+    @RequestMapping(value = "/", params="firebaseId", method = RequestMethod.GET)
+    public ResponseEntity<?> readUIDRestaurant(@RequestParam("firebaseId") String firebaseId) {
+        Optional<Restaurant> restaurant = restaurantService.readUIDRestaurant(firebaseId);
+        if(restaurant.isPresent()){
+            return new ResponseEntity<Restaurant>(restaurant.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+
     }
 
 
