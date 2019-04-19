@@ -13,5 +13,7 @@ import java.util.Optional;
 public interface RestaurantDAO extends JpaRepository<Restaurant,Long> {
     Optional<Restaurant> findById(Long restaurantId);
     List<Restaurant> findAllByUuidOrderByName(String uuid);
+    List<Restaurant> findAllByZipcodeOrderByAvgprice(int zipcode);
+    List<Restaurant> findAllByNameContainsOrderByAvgprice(String name);
     Optional<Restaurant> findRestaurantByFirebaseId(String firebaseId);
 }

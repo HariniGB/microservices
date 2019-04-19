@@ -14,4 +14,7 @@ public interface RestaurantService {
     Optional<Restaurant> readUIDRestaurant(String firebaseId);
     Optional<Restaurant> updateRestaurant(Long restaurantId, Restaurant restaurantInBound);
     Optional<Restaurant> deleteRestaurant(Long restaurantId);
+    List<Restaurant> filterZipCodeRestaurants(int zipcode);
+    List<Restaurant> filterNameLikeRestaurants(String name);
+
 }

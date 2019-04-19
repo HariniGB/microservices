@@ -15,6 +15,7 @@ import java.util.Optional;
 @Service
 public class RestaurantServiceImpl implements RestaurantService{
 
+
     @Autowired
     RestaurantDAO restaurantDAO;
 
@@ -42,6 +43,28 @@ public class RestaurantServiceImpl implements RestaurantService{
     @Override
     public List<Restaurant> readAllUserRestaurants(String uuid) {
         List <Restaurant> restaurants = restaurantDAO.findAllByUuidOrderByName(uuid);
+        if (restaurants!=null) {
+            return restaurants;
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public List<Restaurant> filterZipCodeRestaurants(int zipcode) {
+        List <Restaurant> restaurants = restaurantDAO.findAllByZipcodeOrderByAvgprice(zipcode);
+        if (restaurants!=null) {
+            return restaurants;
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public List<Restaurant> filterNameLikeRestaurants(String name) {
+        List <Restaurant> restaurants = restaurantDAO.findAllByNameContainsOrderByAvgprice(name);
         if (restaurants!=null) {
             return restaurants;
         }

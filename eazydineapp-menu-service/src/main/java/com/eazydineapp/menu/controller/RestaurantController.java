@@ -113,5 +113,33 @@ public class RestaurantController {
 
     }
 
+	@ApiOperation(value = "Search Restaurant", notes="Search a Restaurant with name like",nickname = "searchRestaurantWithName")
+	@RequestMapping(value = "/search", params="name", method = RequestMethod.GET)
+	public ResponseEntity<?> searchNameLikeRestaurants(@RequestParam("name") String name) {
+		List<Restaurant> allRestaurants =  restaurantService.filterNameLikeRestaurants(name);
+		if(allRestaurants!=null) {
+			ModelMapper modelMapper = new ModelMapper();
+			List<RestaurantDTO> allRestaurantsDTO = allRestaurants.stream().
+					map(source -> modelMapper.map(source, RestaurantDTO.class)).
+					collect(Collectors.toList());
+			return new ResponseEntity<List<RestaurantDTO>>(allRestaurantsDTO, HttpStatus.OK);
+		}
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
+
+	@ApiOperation(value = "Search Restaurant", notes="Search a Restaurant with zipcode",nickname = "searchRestaurantWithZipCode")
+	@RequestMapping(value = "/search", params="zipcode", method = RequestMethod.GET)
+	public ResponseEntity<?> searchZipCodeRestaurants(@RequestParam("zipcode") int zipcode) {
+		List<Restaurant> allRestaurants =  restaurantService.filterZipCodeRestaurants(zipcode);
+		if(allRestaurants!=null) {
+			ModelMapper modelMapper = new ModelMapper();
+			List<RestaurantDTO> allRestaurantsDTO = allRestaurants.stream().
+					map(source -> modelMapper.map(source, RestaurantDTO.class)).
+					collect(Collectors.toList());
+			return new ResponseEntity<List<RestaurantDTO>>(allRestaurantsDTO, HttpStatus.OK);
+		}
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
+
 
 }
